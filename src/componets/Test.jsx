@@ -1,5 +1,5 @@
-const Test = () => {
-  return (<h1>Hello World!</h1>)
+function Test() {
+  return (<h1>Hello World!</h1>);
 }
 
-export default Test
+export default Test;

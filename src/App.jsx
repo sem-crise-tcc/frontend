@@ -1,11 +1,11 @@
-import Test from './componets/Test'
+import Test from './componets/Test';
 
 function App() {
   return (
     <div className="App">
       <Test />
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
