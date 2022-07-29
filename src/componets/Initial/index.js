@@ -1,4 +1,4 @@
-import Button from '../Button';
+// import Button from '../Button';
 import {
   Container,
   Title,
@@ -12,8 +12,8 @@ function Initial() {
       <Description>
         Breve descrição sobre o que é o produto brabrbarbabr brabrab brabrab
       </Description>
-      <Button>Login</Button>
-      <Button>Cadastrar</Button>
+      {/* <Button>Login</Button>
+      <Button>Cadastrar</Button> */}
     </Container>
   );
 }
