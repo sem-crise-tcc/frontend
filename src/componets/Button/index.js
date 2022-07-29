@@ -33,7 +33,10 @@ Button.propTypes = {
     icon: PropTypes.element,
     style: PropTypes.objectOf(PropTypes.shape({
       alignItems: PropTypes.string,
-      display: PropTypes.string
+      display: PropTypes.string,
+      borderRadius: PropTypes.string,
+      justifyContent: PropTypes.string,
+      marginTop: PropTypes.string
     }))
   }).isRequired
 };

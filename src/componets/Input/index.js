@@ -4,18 +4,21 @@ import {
   InputStyled
 } from './styles';
 
-function Input({ placeholder }) {
+function Input({ inputConfig }) {
+  const { placeholder } = inputConfig;
   return (
     <InputStyled placeholder={placeholder} />
   );
 }
 
 Input.defaultProps = {
-  placeholder: ''
+  inputConfig: {}
 };
 
 Input.propTypes = {
-  placeholder: PropTypes.string
+  inputConfig: PropTypes.shape({
+    placeholder: PropTypes.string
+  })
 };
 
 export default Input;
