@@ -19,6 +19,7 @@ export const BTN_CREATE_ACCOUNT = {
   text: 'Criar conta',
   block: 'block',
   type: 'default',
+  htmlType: 'submit',
   style: {
     alignItems: 'center',
     display: 'flex',

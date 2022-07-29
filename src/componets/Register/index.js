@@ -1,24 +1,28 @@
-import { Divider, Form } from 'antd';
+import {
+  Divider, Form, Input, message
+} from 'antd';
 
 import { BTN_REGISTER_GOOGLE, BTN_CREATE_ACCOUNT, BTN_LOGIN } from '../../defaults/ButtonType';
-import {
-  INPUT_TYPE_NAME,
-  INPUT_TYPE_LAST_NAME,
-  INPUT_TYPE_NICKNAME,
-  INPUT_TYPE_EMAIL,
-  INPUT_TYPE_PASSWORD,
-  INPUT_TYPE_CONFIRM_PASSWORD
-} from '../../defaults/InputType';
 
 import Button from '../Button';
-import Input from '../Input';
 import {
   Container, InfoBrand, Describe, ContainerLogin
 } from './styles';
 
 const { Item: FormItem } = Form;
+const { Password: InputPassword } = Input;
 
 function Register() {
+  const onFinish = (values) => {
+    console.log('Success:', values);
+  };
+
+  const onFinishFailed = (errors) => {
+    if (errors) {
+      message.error('Por favor, preencha os campos corretamente.');
+    }
+  };
+
   return (
     <Container>
       <InfoBrand>
@@ -29,77 +33,75 @@ function Register() {
 
       <Divider>ou</Divider>
 
-      <Form>
+      <Form
+        onFinish={onFinish}
+        onFinishFailed={onFinishFailed}
+        autoComplete="off"
+      >
         <FormItem
           name="username"
           rules={[
             {
               required: true,
-              message: 'Please input your username!'
+              message: 'Por favor, insira seu nome.'
             }
           ]}
         >
-          <Input inputConfig={INPUT_TYPE_NAME} />
+          <Input placeholder="Nome" />
         </FormItem>
 
         <FormItem
-          name="username"
+          name="lastname"
           rules={[
             {
               required: true,
-              message: 'Please input your username!'
+              message: 'Por favor, insira seu sobrenome.'
             }
           ]}
         >
-          <Input inputConfig={INPUT_TYPE_LAST_NAME} />
+          <Input placeholder="Sobrenome" />
         </FormItem>
 
         <FormItem
-          name="username"
-          rules={[
-            {
-              required: true,
-              message: 'Please input your username!'
-            }
-          ]}
+          name="nickname"
         >
-          <Input inputConfig={INPUT_TYPE_NICKNAME} />
+          <Input placeholder="Apelido" />
         </FormItem>
 
         <FormItem
-          name="username"
+          name="email"
           rules={[
             {
               required: true,
-              message: 'Please input your username!'
+              message: 'Por favor, insira seu e-mail.'
             }
           ]}
         >
-          <Input inputConfig={INPUT_TYPE_EMAIL} />
+          <Input placeholder="E-mail" />
         </FormItem>
 
         <FormItem
-          name="username"
+          name="password"
           rules={[
             {
               required: true,
-              message: 'Please input your username!'
+              message: 'Por favor, insira sua senha.'
             }
           ]}
         >
-          <Input inputConfig={INPUT_TYPE_PASSWORD} />
+          <InputPassword placeholder="Senha" />
         </FormItem>
 
         <FormItem
-          name="username"
+          name="confirm-password"
           rules={[
             {
               required: true,
-              message: 'Please input your username!'
+              message: 'Por favor, insira sua confirmação de senha.'
             }
           ]}
         >
-          <Input inputConfig={INPUT_TYPE_CONFIRM_PASSWORD} />
+          <InputPassword placeholder="Confirmar senha" />
         </FormItem>
 
         <FormItem>

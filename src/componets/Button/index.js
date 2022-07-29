@@ -10,6 +10,7 @@ function Button({ buttonConfig }) {
     type,
     block,
     icon,
+    htmlType,
     style
   } = buttonConfig;
 
@@ -19,6 +20,7 @@ function Button({ buttonConfig }) {
       type={type}
       icon={icon}
       style={style}
+      htmlType={htmlType}
     >
       {text}
     </ButtonStyled>
@@ -31,6 +33,7 @@ Button.propTypes = {
     type: PropTypes.string,
     block: PropTypes.string,
     icon: PropTypes.element,
+    htmlType: PropTypes.string,
     style: PropTypes.objectOf(PropTypes.shape({
       alignItems: PropTypes.string,
       display: PropTypes.string,
