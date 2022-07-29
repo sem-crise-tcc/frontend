@@ -2,7 +2,7 @@ import { Routes, Route } from 'react-router-dom';
 
 import Initial from './componets/Initial';
 import Register from './componets/Register';
-import GlobalStyled from './globalStyles';
+import './App.less';
 
 function App() {
   return (
@@ -11,7 +11,6 @@ function App() {
         <Route path="/" element={<Initial />} />
         <Route path="register" element={<Register />} />
       </Routes>
-      <GlobalStyled />
     </div>
   );
 }
