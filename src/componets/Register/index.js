@@ -3,6 +3,15 @@ import {
 } from 'antd';
 
 import { BTN_REGISTER_GOOGLE, BTN_CREATE_ACCOUNT, BTN_LOGIN } from '../../defaults/ButtonType';
+import {
+  REGISTER_FIELD_FIRST_NAME,
+  REGISTER_FIELD_LAST_NAME,
+  REGISTER_FIELD_NICKNAME,
+  REGISTER_FIELD_EMAIL,
+  REGISTER_FIELD_PASSWORD
+} from '../../defaults/RegisterFields';
+
+import { getRuleField } from '../utility/RuleField';
 
 import Button from '../Button';
 import {
@@ -40,65 +49,53 @@ function Register() {
       >
         <FormItem
           name="username"
-          rules={[
-            {
-              required: true,
-              message: 'Por favor, insira seu nome.'
-            }
-          ]}
+          rules={[getRuleField(REGISTER_FIELD_FIRST_NAME)]}
         >
           <Input placeholder="Nome" />
         </FormItem>
 
         <FormItem
           name="lastname"
-          rules={[
-            {
-              required: true,
-              message: 'Por favor, insira seu sobrenome.'
-            }
-          ]}
+          rules={[getRuleField(REGISTER_FIELD_LAST_NAME)]}
         >
           <Input placeholder="Sobrenome" />
         </FormItem>
 
         <FormItem
           name="nickname"
+          rules={[getRuleField(REGISTER_FIELD_NICKNAME)]}
         >
           <Input placeholder="Apelido" />
         </FormItem>
 
         <FormItem
           name="email"
-          rules={[
-            {
-              required: true,
-              message: 'Por favor, insira seu e-mail.'
-            }
-          ]}
+          rules={[getRuleField(REGISTER_FIELD_EMAIL)]}
         >
           <Input placeholder="E-mail" />
         </FormItem>
 
         <FormItem
           name="password"
-          rules={[
-            {
-              required: true,
-              message: 'Por favor, insira sua senha.'
-            }
-          ]}
+          hasFeedback
+          rules={[getRuleField(REGISTER_FIELD_PASSWORD)]}
         >
           <InputPassword placeholder="Senha" />
         </FormItem>
 
         <FormItem
           name="confirm-password"
+          hasFeedback
           rules={[
-            {
-              required: true,
-              message: 'Por favor, insira sua confirmação de senha.'
-            }
+            getRuleField(REGISTER_FIELD_PASSWORD),
+            ({ getFieldValue }) => ({
+              validator(_, value) {
+                if (!value || getFieldValue('password') === value) {
+                  return Promise.resolve();
+                }
+                return Promise.reject(new Error('A confirmação de senha não confere'));
+              }
+            })
           ]}
         >
           <InputPassword placeholder="Confirmar senha" />
