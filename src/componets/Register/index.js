@@ -11,11 +11,14 @@ import {
   REGISTER_FIELD_PASSWORD
 } from '../../defaults/RegisterFields';
 
-import { getRuleField } from '../utility/RuleField';
+import { getRuleField } from '../../utility/RuleField';
+import { validationRegexPassword } from '../../utility/ValidationRegexPassword';
+import { RULE_PASSWORD_TYPES } from '../../defaults/RulePasswordType';
 
 import Button from '../Button';
+import RulePassword from './RulePassword';
 import {
-  Container, InfoBrand, Describe, ContainerLogin
+  Container, InfoBrand, Describe, ContainerLogin, PasswordValidBlock
 } from './styles';
 
 const { Item: FormItem } = Form;
@@ -70,7 +73,13 @@ function Register() {
 
         <FormItem
           name="email"
-          rules={[getRuleField(REGISTER_FIELD_EMAIL)]}
+          rules={[
+            {
+              type: 'email',
+              message: 'Não é um e-mail válido.'
+            },
+            getRuleField(REGISTER_FIELD_EMAIL)
+          ]}
         >
           <Input placeholder="E-mail" />
         </FormItem>
@@ -78,7 +87,11 @@ function Register() {
         <FormItem
           name="password"
           hasFeedback
-          rules={[getRuleField(REGISTER_FIELD_PASSWORD)]}
+          rules={[
+            ({
+              validator: (_, value) => validationRegexPassword(value)
+            })
+          ]}
         >
           <InputPassword placeholder="Senha" />
         </FormItem>
@@ -93,13 +106,19 @@ function Register() {
                 if (!value || getFieldValue('password') === value) {
                   return Promise.resolve();
                 }
-                return Promise.reject(new Error('A confirmação de senha não confere'));
+                return Promise.reject(new Error('A confirmação de senha não confere.'));
               }
             })
           ]}
         >
           <InputPassword placeholder="Confirmar senha" />
         </FormItem>
+
+        <PasswordValidBlock>
+          {RULE_PASSWORD_TYPES.map(({ icon, text }) => (
+            <RulePassword icon={icon} text={text} />
+          ))}
+        </PasswordValidBlock>
 
         <FormItem>
           <Button buttonConfig={BTN_CREATE_ACCOUNT} />

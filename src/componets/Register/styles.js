@@ -24,6 +24,10 @@ export const ContainerLogin = styled.div`
   margin-bottom: 24px
 `;
 
+export const PasswordValidBlock = styled.div`
+  padding-bottom: 20px;
+`;
+
 export default {
-  Container, InfoBrand, Describe, ContainerLogin
+  Container, InfoBrand, Describe, ContainerLogin, PasswordValidBlock
 };
