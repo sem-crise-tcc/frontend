@@ -1,5 +1,5 @@
 export const validationRegexPassword = (value) => {
-  const regex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[$*&@#])[0-9a-zA-Z$*&@#]{8,}$/;
+  const regex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[$*&@#.?!,])[0-9a-zA-Z$*&@#.?!,]{8,}$/;
 
   if (!regex.exec(value)) {
     return Promise.reject(

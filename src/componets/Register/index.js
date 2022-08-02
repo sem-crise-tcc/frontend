@@ -11,9 +11,12 @@ import {
   REGISTER_FIELD_PASSWORD
 } from '../../defaults/RegisterFields';
 
+import { RULE_PASSWORD_TYPES } from '../../defaults/RulePasswordType';
+
 import { getRuleField } from '../../utility/RuleField';
 import { validationRegexPassword } from '../../utility/ValidationRegexPassword';
-import { RULE_PASSWORD_TYPES } from '../../defaults/RulePasswordType';
+
+import useWindowDimensions from '../../hooks/useWindowDimensions';
 
 import Button from '../Button';
 import RulePassword from './RulePassword';
@@ -25,6 +28,8 @@ const { Item: FormItem } = Form;
 const { Password: InputPassword } = Input;
 
 function Register() {
+  const { isMobile } = useWindowDimensions();
+
   const onFinish = (values) => {
     console.log('Success:', values);
   };
@@ -36,7 +41,7 @@ function Register() {
   };
 
   return (
-    <Container>
+    <Container isMobile={isMobile}>
       <InfoBrand>
         <img src={`${process.env.PUBLIC_URL}/logo.jpg`} alt="Logo da marca" width="200px" height="200px" />
         <Describe>Breve descrição sobre o que é o produto brabrbarbabr brabrab brabrab</Describe>
