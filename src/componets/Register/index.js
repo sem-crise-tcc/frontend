@@ -1,15 +1,7 @@
 import {
   Divider, Form, Input, message
 } from 'antd';
-
-import { BTN_REGISTER_GOOGLE, BTN_CREATE_ACCOUNT, BTN_LOGIN } from '../../defaults/ButtonType';
-import {
-  REGISTER_FIELD_FIRST_NAME,
-  REGISTER_FIELD_LAST_NAME,
-  REGISTER_FIELD_NICKNAME,
-  REGISTER_FIELD_EMAIL,
-  REGISTER_FIELD_PASSWORD
-} from '../../defaults/RegisterFields';
+import { Link } from 'react-router-dom';
 
 import { RULE_PASSWORD_TYPES } from '../../defaults/RulePasswordType';
 
@@ -17,6 +9,15 @@ import { getRuleField } from '../../utility/RuleField';
 import { validationRegexPassword } from '../../utility/ValidationRegexPassword';
 
 import useWindowDimensions from '../../hooks/useWindowDimensions';
+
+import { BTN_REGISTER_GOOGLE, BTN_CREATE_ACCOUNT, BTN_LOGIN_LINK } from '../../defaults/ButtonType';
+import {
+  REGISTER_FIELD_FIRST_NAME,
+  REGISTER_FIELD_LAST_NAME,
+  REGISTER_FIELD_NICKNAME,
+  REGISTER_FIELD_EMAIL,
+  REGISTER_FIELD_PASSWORD
+} from '../../defaults/RegisterFields';
 
 import Button from '../Button';
 import RulePassword from './RulePassword';
@@ -120,8 +121,8 @@ function Register() {
         </FormItem>
 
         <PasswordValidBlock>
-          {RULE_PASSWORD_TYPES.map(({ icon, text }) => (
-            <RulePassword icon={icon} text={text} />
+          {RULE_PASSWORD_TYPES.map(({ icon, text }, index) => (
+            <RulePassword key={index} icon={icon} text={text} />
           ))}
         </PasswordValidBlock>
 
@@ -134,7 +135,9 @@ function Register() {
         <span>
           Já tem uma conta?
         </span>
-        <Button buttonConfig={BTN_LOGIN} />
+        <Link to="/login">
+          <Button buttonConfig={BTN_LOGIN_LINK} />
+        </Link>
       </ContainerLogin>
     </Container>
   );

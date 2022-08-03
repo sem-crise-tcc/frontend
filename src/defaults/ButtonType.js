@@ -27,9 +27,35 @@ export const BTN_CREATE_ACCOUNT = {
   }
 };
 
-export const BTN_LOGIN = {
+export const BTN_LOGIN_LINK = {
   text: 'Faça login',
   type: 'link',
+  style: {
+    alignItems: 'center',
+    display: 'flex',
+    justifyContent: 'center'
+  }
+};
+
+export const BTN_LOGIN_GOOGLE = {
+  text: 'Faça login com Google',
+  block: 'block',
+  type: 'default',
+  icon: <FcGoogle />,
+  style: {
+    alignItems: 'center',
+    display: 'flex',
+    borderRadius: '30px',
+    justifyContent: 'center',
+    marginTop: '24px'
+  }
+};
+
+export const BTN_LOGIN = {
+  text: 'Login',
+  block: 'block',
+  type: 'default',
+  htmlType: 'submit',
   style: {
     alignItems: 'center',
     display: 'flex',
@@ -40,5 +66,7 @@ export const BTN_LOGIN = {
 export default {
   BTN_REGISTER_GOOGLE,
   BTN_CREATE_ACCOUNT,
+  BTN_LOGIN_LINK,
+  BTN_LOGIN_GOOGLE,
   BTN_LOGIN
 };
