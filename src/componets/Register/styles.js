@@ -1,7 +1,8 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  margin: 1.5rem;
+  margin: 2rem;
+  max-width: 31rem;
 
   & form {
     width: 100%;

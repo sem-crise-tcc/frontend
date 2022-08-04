@@ -1,7 +1,8 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  margin: 1.5rem;
+  margin: 2rem;
+  max-width: 31rem;
 
   & form {
     width: 100%;
@@ -9,30 +10,34 @@ export const Container = styled.div`
 
   ${({ isMobile }) => !isMobile
     && `
-    display: flex;
     align-items: center;
-    justify-content: center;
+    display: flex;
     flex-direction: column;
+    justify-content: center;
     margin: auto;
     width: 30%;  
   `}
 `;
 
+export const Text = styled.h1`
+  margin: 20px;
+`;
+
 export const InfoBrand = styled.div`
-  display: flex;
   align-items: center;
-  justify-content: center;
+  display: flex;
   flex-direction: column;
+  justify-content: center;
 `;
 
 export const Describe = styled.h2`
   font-size: 1.12rem;
   text-align: center;
-  margin-top: 24px;
 `;
 
 export default {
   Container,
+  Text,
   InfoBrand,
   Describe
 };

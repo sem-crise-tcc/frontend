@@ -44,7 +44,7 @@ function Register() {
   return (
     <Container isMobile={isMobile}>
       <InfoBrand>
-        <img src={`${process.env.PUBLIC_URL}/logo.jpg`} alt="Logo da marca" width="200px" height="200px" />
+        <img src={`${process.env.PUBLIC_URL}/logo.png`} alt="Logo da marca" />
         <Describe>Breve descrição sobre o que é o produto brabrbarbabr brabrab brabrab</Describe>
         <Button buttonConfig={BTN_REGISTER_GOOGLE} />
       </InfoBrand>

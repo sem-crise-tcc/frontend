@@ -6,7 +6,7 @@
   --green: #33cc95;
   --blue: #5429CC;
   --blue-light: #6933ff;
-  --text-title: #363f5f;
+  --text-title: #525252;
   --text-body: #969cb3;
   --shape: #FFFFFF;
 }
@@ -15,6 +15,10 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+}
+
+#root, .App {
+  height: 100%;
 }
 
 html {
@@ -38,6 +42,7 @@ body, input, textarea, button {
 }
 
 h1, h2, h3, h4, h5, h6, strong {
+  color: var(--text-title);
   font-weight: 600;
 }
 

@@ -1,19 +1,30 @@
-// import Button from '../Button';
+import Button from '../Button';
+
+import {
+  BTN_SIGN_IN,
+  BTN_SIGN_UP
+} from '../../defaults/ButtonType';
+
 import {
   Container,
-  Title,
-  Description
+  DescriptionContainer,
+  Description,
+  GetStarted
 } from './styles';
 
 function Initial() {
   return (
     <Container>
-      <Title>Nome da marca</Title>
-      <Description>
-        Breve descrição sobre o que é o produto brabrbarbabr brabrab brabrab
-      </Description>
-      {/* <Button>Login</Button>
-      <Button>Cadastrar</Button> */}
+      <DescriptionContainer>
+        <Description>
+          Breve descrição sobre o que é o produto brabrbarbabr brabrab brabrab
+        </Description>
+      </DescriptionContainer>
+
+      <GetStarted>
+        <Button buttonConfig={BTN_SIGN_IN} />
+        <Button buttonConfig={BTN_SIGN_UP} />
+      </GetStarted>
     </Container>
   );
 }
