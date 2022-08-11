@@ -25,8 +25,10 @@ function Login() {
 
   const onFinish = ({ email, password }) => {
     console.log('Success:', email, password);
+  };
 
-    if (!email) {
+  const onFinishFailed = (error) => {
+    if (!error) {
       notification.warning({
         message: 'Ops!',
         description:
@@ -48,6 +50,7 @@ function Login() {
 
       <Form
         onFinish={onFinish}
+        onFinishFailed={onFinishFailed}
         autoComplete="off"
       >
         <FormItem

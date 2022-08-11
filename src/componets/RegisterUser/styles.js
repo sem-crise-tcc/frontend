@@ -1,8 +1,14 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: center;
   margin: 2rem;
-  max-width: 31rem;
+  margin: auto;
+  width: 90%;
 
   & form {
     width: 100%;
@@ -10,10 +16,6 @@ export const Container = styled.div`
 
   ${({ isMobile }) => !isMobile
     && `
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
     margin: auto;
     width: 30%;  
   `}

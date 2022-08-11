@@ -1,10 +1,12 @@
+import { DEFAULT_ENVIRONMENT } from '../defaults/Endpoints';
+
 const headers = {
   'Content-type': 'application/json'
 };
 
 class ApplicationAPI {
   static register = (searchBody) => new Promise((resolve, reject) => {
-    fetch('', {
+    fetch(`${DEFAULT_ENVIRONMENT}/api/User/register`, {
       method: 'POST',
       body: JSON.stringify(searchBody),
       headers: { ...headers }

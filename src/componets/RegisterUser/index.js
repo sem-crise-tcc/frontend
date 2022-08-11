@@ -8,6 +8,8 @@ import { RULE_PASSWORD_TYPES } from '../../defaults/RulePasswordType';
 import { getRuleField } from '../../utility/RuleField';
 import { validationRegexPassword } from '../../utility/ValidationRegexPassword';
 
+import ApplicationAPI from '../../integrations/ApplicationAPI';
+
 import useWindowDimensions from '../../hooks/useWindowDimensions';
 
 import { BTN_REGISTER_GOOGLE, BTN_CREATE_ACCOUNT, BTN_LOGIN_LINK } from '../../defaults/ButtonType';
@@ -28,11 +30,33 @@ import {
 const { Item: FormItem } = Form;
 const { Password: InputPassword } = Input;
 
-function Register() {
+function RegisterUser() {
   const { isMobile } = useWindowDimensions();
 
   const onFinish = (values) => {
-    console.log('Success:', values);
+    try {
+      const {
+        username,
+        lastname,
+        nickname,
+        email,
+        password,
+        'confirm-password': confirmPassword
+      } = values;
+
+      const searchBody = {
+        username,
+        lastname,
+        nickname,
+        email,
+        password,
+        confirmPassword
+      };
+
+      ApplicationAPI.register(searchBody);
+    } catch (error) {
+      console.log('eror', error);
+    }
   };
 
   const onFinishFailed = (errors) => {
@@ -44,7 +68,7 @@ function Register() {
   return (
     <Container isMobile={isMobile}>
       <InfoBrand>
-        <img src={`${process.env.PUBLIC_URL}/logo.png`} alt="Logo da marca" />
+        <img src="logo.png" alt="Logo da marca" />
         <Describe>Breve descrição sobre o que é o produto brabrbarbabr brabrab brabrab</Describe>
         <Button buttonConfig={BTN_REGISTER_GOOGLE} />
       </InfoBrand>
@@ -143,4 +167,4 @@ function Register() {
   );
 }
 
-export default Register;
+export default RegisterUser;
