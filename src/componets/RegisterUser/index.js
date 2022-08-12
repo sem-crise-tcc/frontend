@@ -1,10 +1,14 @@
+import { useCallback } from 'react';
 import {
   Divider, Form, Input, message
 } from 'antd';
 import { Link } from 'react-router-dom';
 
+import { callRegisterUser } from '../../ducks/ApplicationDucks/RegisterUser';
+
 import { RULE_PASSWORD_TYPES } from '../../defaults/RulePasswordType';
 
+import { useDispatch } from '../../utility/WorkspaceContext';
 import { getRuleField } from '../../utility/RuleField';
 import { validationRegexPassword } from '../../utility/ValidationRegexPassword';
 
@@ -31,7 +35,13 @@ const { Item: FormItem } = Form;
 const { Password: InputPassword } = Input;
 
 function RegisterUser() {
+  const dispatch = useDispatch();
   const { isMobile } = useWindowDimensions();
+
+  const callReloadSearch = useCallback(
+    (searchBody) => dispatch(callRegisterUser({ searchBody })),
+    [dispatch]
+  );
 
   const onFinish = (values) => {
     try {
@@ -53,7 +63,7 @@ function RegisterUser() {
         confirmPassword
       };
 
-      ApplicationAPI.register(searchBody);
+      callReloadSearch(searchBody);
     } catch (error) {
       console.log('eror', error);
     }

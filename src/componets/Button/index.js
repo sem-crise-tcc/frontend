@@ -34,13 +34,13 @@ Button.propTypes = {
     block: PropTypes.string,
     icon: PropTypes.element,
     htmlType: PropTypes.string,
-    style: PropTypes.objectOf(PropTypes.shape({
+    style: PropTypes.shape({
       alignItems: PropTypes.string,
       display: PropTypes.string,
       borderRadius: PropTypes.string,
       justifyContent: PropTypes.string,
       marginTop: PropTypes.string
-    }))
+    })
   }).isRequired
 };
 

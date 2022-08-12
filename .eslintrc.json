@@ -29,7 +29,8 @@
       "react/jsx-props-no-spreading": ["warn"],
       "no-shadow": "off",
       "comma-dangle": ["error", "never"],
-      "react/no-array-index-key": "off"
+      "react/no-array-index-key": "off",
+      "no-unused-vars": "off"
     }
   }
   
