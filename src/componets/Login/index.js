@@ -31,8 +31,6 @@ function Login() {
     }
   };
 
-  /* eslint no-undef: "off" */
-
   return (
     <Container isMobile={isMobile}>
       <InfoBrand>
