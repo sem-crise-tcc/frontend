@@ -37,9 +37,17 @@ export const Describe = styled.h2`
   text-align: center;
 `;
 
+export const ContainerLogin = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 24px
+`;
+
 export default {
   Container,
   Text,
   InfoBrand,
-  Describe
+  Describe,
+  ContainerLogin
 };

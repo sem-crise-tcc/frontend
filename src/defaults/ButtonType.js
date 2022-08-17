@@ -20,10 +20,32 @@ export const BTN_SIGN_UP = {
   }
 };
 
-export const BTN_FORGOT_PASSWORD = {
-  text: 'Esqueci a senha',
+export const BTN_LINK_FORGOT_PASSWORD = {
+  text: 'Esqueceu sua senha?',
   block: 'block',
-  type: 'link'
+  type: 'default'
+};
+
+export const BTN_FORGOT_PASSWORD = {
+  text: 'Recuperar senha',
+  block: 'block',
+  type: 'primary'
+};
+
+export const BTN_REGISTER_LINK = {
+  text: 'Inscreva-se',
+  type: 'link',
+  style: {
+    alignItems: 'center',
+    display: 'flex',
+    justifyContent: 'center'
+  }
+};
+
+export const BTN_FORGOT_PASSWORD_CANCEL = {
+  text: 'Voltar',
+  block: 'block',
+  type: 'default'
 };
 
 export const BTN_REGISTER_GOOGLE = {
@@ -92,6 +114,8 @@ export default {
   BTN_SIGN_IN,
   BTN_SIGN_UP,
   BTN_FORGOT_PASSWORD,
+  BTN_LINK_FORGOT_PASSWORD,
+  BTN_FORGOT_PASSWORD_CANCEL,
   BTN_REGISTER_GOOGLE,
   BTN_CREATE_ACCOUNT,
   BTN_LOGIN_LINK,

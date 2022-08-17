@@ -4,7 +4,7 @@ import {
   ButtonStyled
 } from './styles';
 
-function Button({ buttonConfig }) {
+function Button({ buttonConfig, onClick }) {
   const {
     text,
     type,
@@ -21,6 +21,7 @@ function Button({ buttonConfig }) {
       icon={icon}
       style={style}
       htmlType={htmlType}
+      onClick={onClick}
     >
       {text}
     </ButtonStyled>
@@ -34,14 +35,15 @@ Button.propTypes = {
     block: PropTypes.string,
     icon: PropTypes.element,
     htmlType: PropTypes.string,
-    style: PropTypes.objectOf(PropTypes.shape({
+    style: PropTypes.shape({
       alignItems: PropTypes.string,
       display: PropTypes.string,
       borderRadius: PropTypes.string,
       justifyContent: PropTypes.string,
       marginTop: PropTypes.string
-    }))
-  }).isRequired
+    })
+  }).isRequired,
+  onClick: PropTypes.func.isRequired
 };
 
 export default Button;

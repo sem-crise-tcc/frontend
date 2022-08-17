@@ -2,8 +2,9 @@ export const CALL_REGISTER_USER = '@application/CALL_REGISTER_USER';
 export const REGISTER_USER_SUCCESS = '@application/REGISTER_USER_SUCCESS';
 export const REGISTER_USER_FAILED = '@application/REGISTER_USER_FAILED';
 
-export const callRegisterUser = () => ({
-  type: CALL_REGISTER_USER
+export const callRegisterUser = ({ searchBody }) => ({
+  type: CALL_REGISTER_USER,
+  searchBody
 });
 
 export const registerUserSuccess = () => ({
@@ -34,6 +35,6 @@ export const onRegisterUserFailed = (state) => ({
   ...state,
   loading: {
     ...state.loading,
-    register: true
+    register: false
   }
 });

@@ -1,17 +1,18 @@
+import { useCallback } from 'react';
 import {
   Divider, Form, Input, message
 } from 'antd';
 import { Link } from 'react-router-dom';
 
-import { RULE_PASSWORD_TYPES } from '../../defaults/RulePasswordType';
+import { callRegisterUser } from '../../ducks/ApplicationDucks/RegisterUser';
 
+import { useDispatch } from '../../utility/WorkspaceContext';
 import { getRuleField } from '../../utility/RuleField';
 import { validationRegexPassword } from '../../utility/ValidationRegexPassword';
 
-import ApplicationAPI from '../../integrations/ApplicationAPI';
-
 import useWindowDimensions from '../../hooks/useWindowDimensions';
 
+import { RULE_PASSWORD_TYPES } from '../../defaults/RulePasswordType';
 import { BTN_REGISTER_GOOGLE, BTN_CREATE_ACCOUNT, BTN_LOGIN_LINK } from '../../defaults/ButtonType';
 import {
   REGISTER_FIELD_FIRST_NAME,
@@ -31,7 +32,13 @@ const { Item: FormItem } = Form;
 const { Password: InputPassword } = Input;
 
 function RegisterUser() {
+  const dispatch = useDispatch();
   const { isMobile } = useWindowDimensions();
+
+  const callReloadSearch = useCallback(
+    (searchBody) => dispatch(callRegisterUser({ searchBody })),
+    [dispatch]
+  );
 
   const onFinish = (values) => {
     try {
@@ -53,7 +60,7 @@ function RegisterUser() {
         confirmPassword
       };
 
-      ApplicationAPI.register(searchBody);
+      callReloadSearch(searchBody);
     } catch (error) {
       console.log('eror', error);
     }
