@@ -9,7 +9,7 @@ const createReducer = ([initialState, actionHandlers]) => (
   || state;
 
 const createRootReducer = () => combineReducers({
-  search: createReducer(application)
+  application: createReducer(application)
 });
 
 export default createRootReducer;

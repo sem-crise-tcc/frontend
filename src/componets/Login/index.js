@@ -1,15 +1,11 @@
-import {
-  Divider,
-  Form,
-  Input,
-  notification
-} from 'antd';
-
 import useWindowDimensions from '../../hooks/useWindowDimensions';
 
-import { BTN_LOGIN_GOOGLE, BTN_LOGIN, BTN_FORGOT_PASSWORD } from '../../defaults/ButtonType';
+// import { openModalRecoverPassword } from '../../ducks/ApplicationDucks/RecoverPassword';
 
-import Button from '../Button';
+import { useSelector } from '../../utility/WorkspaceContext';
+
+import FormLogin from './FormLogin';
+import PasswordReset from './PasswordReset';
 import {
   Container,
   Text,
@@ -17,23 +13,21 @@ import {
   Describe
 } from './styles';
 
-const { Item: FormItem } = Form;
-const { Password: InputPassword } = Input;
-
 function Login() {
   const { isMobile } = useWindowDimensions();
 
-  const onFinish = ({ email, password }) => {
-    console.log('Success:', email, password);
-  };
+  const isModalPasswordResetVisible = useSelector(
+    ({ application }) => application.modals.passwordReset.isVisible
+  );
 
-  const onFinishFailed = (error) => {
-    if (!error) {
-      notification.warning({
-        message: 'Ops!',
-        description:
-          'E-mail e/ou senha inválidos. Por favor, tente novamente.'
-      });
+  const text = {
+    title: {
+      login: 'Olá!',
+      passwordReset: 'Hey!'
+    },
+    describe: {
+      login: 'Breve descrição sobre o que é o produto brabrbarbabr brabrab brabrab',
+      passwordReset: 'Informe seu e-mail do DinJoy'
     }
   };
 
@@ -41,39 +35,21 @@ function Login() {
     <Container isMobile={isMobile}>
       <InfoBrand>
         <img src={`${process.env.PUBLIC_URL}/logo.png`} alt="Logo DinJoy" />
-        <Text>Olá!</Text>
-        <Describe>Breve descrição sobre o que é o produto brabrbarbabr brabrab brabrab</Describe>
-        <Button buttonConfig={BTN_LOGIN_GOOGLE} />
+        <Text>
+          {!isModalPasswordResetVisible
+            ? text.title.login
+            : text.title.passwordReset}
+        </Text>
+        <Describe>
+          {!isModalPasswordResetVisible
+            ? text.describe.login
+            : text.describe.passwordReset}
+        </Describe>
       </InfoBrand>
 
-      <Divider>ou</Divider>
-
-      <Form
-        onFinish={onFinish}
-        onFinishFailed={onFinishFailed}
-        autoComplete="off"
-      >
-        <FormItem
-          name="email"
-        >
-          <Input placeholder="E-mail" />
-        </FormItem>
-
-        <FormItem
-          name="password"
-        >
-          <InputPassword placeholder="Senha" />
-        </FormItem>
-
-        <FormItem>
-          <Button buttonConfig={BTN_LOGIN} />
-        </FormItem>
-
-        <FormItem>
-          <Button buttonConfig={BTN_FORGOT_PASSWORD} />
-        </FormItem>
-      </Form>
+      {!isModalPasswordResetVisible ? <FormLogin /> : <PasswordReset />}
     </Container>
+
   );
 }
 

@@ -6,16 +6,13 @@ import { Link } from 'react-router-dom';
 
 import { callRegisterUser } from '../../ducks/ApplicationDucks/RegisterUser';
 
-import { RULE_PASSWORD_TYPES } from '../../defaults/RulePasswordType';
-
 import { useDispatch } from '../../utility/WorkspaceContext';
 import { getRuleField } from '../../utility/RuleField';
 import { validationRegexPassword } from '../../utility/ValidationRegexPassword';
 
-import ApplicationAPI from '../../integrations/ApplicationAPI';
-
 import useWindowDimensions from '../../hooks/useWindowDimensions';
 
+import { RULE_PASSWORD_TYPES } from '../../defaults/RulePasswordType';
 import { BTN_REGISTER_GOOGLE, BTN_CREATE_ACCOUNT, BTN_LOGIN_LINK } from '../../defaults/ButtonType';
 import {
   REGISTER_FIELD_FIRST_NAME,

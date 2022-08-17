@@ -11,6 +11,7 @@ import ApplicationAPI from '../integrations/ApplicationAPI';
 function* registerUser({ searchBody }) {
   try {
     const user = yield call(ApplicationAPI.register, searchBody);
+    console.log('user', user);
 
     yield put(registerUserSuccess());
   } catch (e) {
