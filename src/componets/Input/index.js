@@ -22,7 +22,7 @@ function Input({ inputConfig, hasFeedback, rules }) {
 }
 
 Input.defaultProps = {
-  rules: '',
+  rules: [],
   hasFeedback: false
 };
 
