@@ -7,7 +7,7 @@ import {
 } from 'antd';
 import { Link } from 'react-router-dom';
 
-import { openModalPasswordReset } from '../../../ducks/ApplicationDucks/PasswordReset';
+import { openPasswordReset } from '../../../ducks/ApplicationDucks/PasswordReset';
 
 import { useDispatch } from '../../../utility/WorkspaceContext';
 
@@ -27,8 +27,8 @@ const { Password: InputPassword } = Input;
 function FormLogin() {
   const dispatch = useDispatch();
 
-  const openModal = useCallback(
-    () => dispatch(openModalPasswordReset()),
+  const callPasswordReset = useCallback(
+    () => dispatch(openPasswordReset()),
     [dispatch]
   );
 
@@ -68,11 +68,11 @@ function FormLogin() {
         </FormItem>
 
         <FormItem>
-          <Button buttonConfig={BTN_LOGIN} />
+          <Button buttonConfig={BTN_LOGIN} onClick={() => console.log('oi')} />
         </FormItem>
 
         <FormItem>
-          <Button buttonConfig={BTN_LINK_FORGOT_PASSWORD} onClick={() => openModal()} />
+          <Button buttonConfig={BTN_LINK_FORGOT_PASSWORD} onClick={() => callPasswordReset()} />
         </FormItem>
       </Form>
 

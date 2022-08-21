@@ -1,8 +1,8 @@
 import {
-  OPEN_MODAL_PASSWORD_RESET_SUCCESS,
-  CLOSE_MODAL_PASSWORD_RESET,
-  onOpenModalPasswordReset,
-  onCloseModalPasswordReset
+  OPEN_PASSWORD_RESET_SUCCESS,
+  CLOSE_PASSWORD_RESET,
+  onOpenPasswordReset,
+  onClosePasswordReset
 } from './PasswordReset';
 
 import {
@@ -18,15 +18,15 @@ const ACTION_HANDLERS = {
   [CALL_REGISTER_USER]: onCallRegisterUser,
   [REGISTER_USER_SUCCESS]: onRegisterUserSuccess,
   [REGISTER_USER_FAILED]: onRegisterUserFailed,
-  [OPEN_MODAL_PASSWORD_RESET_SUCCESS]: onOpenModalPasswordReset,
-  [CLOSE_MODAL_PASSWORD_RESET]: onCloseModalPasswordReset
+  [OPEN_PASSWORD_RESET_SUCCESS]: onOpenPasswordReset,
+  [CLOSE_PASSWORD_RESET]: onClosePasswordReset
 };
 
 const INITIAL_STATE = {
   loading: {
     register: false
   },
-  modals: {
+  page: {
     passwordReset: {
       isVisible: false
     }
