@@ -5,6 +5,9 @@ import * as Sentry from '@sentry/react';
 import { BrowserTracing } from '@sentry/tracing';
 import { Provider } from 'react-redux';
 
+import { GlobalStyled } from './globalStyled';
+import 'antd/dist/antd.css';
+
 import { WorkspaceContext } from './utility/WorkspaceContext';
 import store from './store';
 import App from './App';
@@ -25,6 +28,7 @@ root.render(
     <Provider context={WorkspaceContext} store={store}>
       <BrowserRouter>
         <App />
+        <GlobalStyled />
       </BrowserRouter>
     </Provider>
   </React.StrictMode>
