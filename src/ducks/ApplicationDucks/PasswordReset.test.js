@@ -1,11 +1,11 @@
 import {
-  OPEN_MODAL_PASSWORD_RESET_SUCCESS,
-  CLOSE_MODAL_PASSWORD_RESET,
+  OPEN_PASSWORD_RESET_SUCCESS,
+  CLOSE_PASSWORD_RESET,
   CALL_PASSWORD_RESET,
   PASSWORD_RESET_SUCCESS,
   PASSWORD_RESET_FAILED,
-  openModalPasswordReset,
-  closeModalPasswordReset,
+  openPasswordReset,
+  closePasswordReset,
   callPasswordReset,
   passwordResetSuccess,
   passwordResetFailed
@@ -14,14 +14,14 @@ import {
 describe('Password reset', () => {
   describe('Action Creators', () => {
     it('should call the action to open the modal', () => {
-      expect(openModalPasswordReset()).toStrictEqual({
-        type: OPEN_MODAL_PASSWORD_RESET_SUCCESS
+      expect(openPasswordReset()).toStrictEqual({
+        type: OPEN_PASSWORD_RESET_SUCCESS
       });
     });
 
     it('should call the action to close the modal', () => {
-      expect(closeModalPasswordReset()).toStrictEqual({
-        type: CLOSE_MODAL_PASSWORD_RESET
+      expect(closePasswordReset()).toStrictEqual({
+        type: CLOSE_PASSWORD_RESET
       });
     });
 
