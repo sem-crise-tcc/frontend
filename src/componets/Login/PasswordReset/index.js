@@ -5,7 +5,7 @@ import {
   notification
 } from 'antd';
 
-import { closeModalPasswordReset } from '../../../ducks/ApplicationDucks/PasswordReset';
+import { closePasswordReset } from '../../../ducks/ApplicationDucks/PasswordReset';
 
 import { useDispatch } from '../../../utility/WorkspaceContext';
 
@@ -22,7 +22,7 @@ function PasswordReset() {
   const dispatch = useDispatch();
 
   const closeModal = useCallback(
-    () => dispatch(closeModalPasswordReset()),
+    () => dispatch(closePasswordReset()),
     [dispatch]
   );
 

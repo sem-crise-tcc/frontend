@@ -16,8 +16,8 @@ import {
 function Login() {
   const { isMobile } = useWindowDimensions();
 
-  const isModalPasswordResetVisible = useSelector(
-    ({ application }) => application.modals.passwordReset.isVisible
+  const isPasswordResetVisible = useSelector(
+    ({ application }) => application.page.passwordReset.isVisible
   );
 
   const text = {
@@ -36,18 +36,18 @@ function Login() {
       <InfoBrand>
         <img src={`${process.env.PUBLIC_URL}/logo.png`} alt="Logo DinJoy" />
         <Text>
-          {!isModalPasswordResetVisible
+          {!isPasswordResetVisible
             ? text.title.login
             : text.title.passwordReset}
         </Text>
         <Describe>
-          {!isModalPasswordResetVisible
+          {!isPasswordResetVisible
             ? text.describe.login
             : text.describe.passwordReset}
         </Describe>
       </InfoBrand>
 
-      {!isModalPasswordResetVisible ? <FormLogin /> : <PasswordReset />}
+      {!isPasswordResetVisible ? <FormLogin /> : <PasswordReset />}
     </Container>
 
   );

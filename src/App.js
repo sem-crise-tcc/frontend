@@ -4,7 +4,6 @@ import Initial from './componets/Initial';
 import RegisterUser from './componets/RegisterUser';
 import Login from './componets/Login';
 import Home from './componets/Home';
-import './App.less';
 
 function App() {
   return (
