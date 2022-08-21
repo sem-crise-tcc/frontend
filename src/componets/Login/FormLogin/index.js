@@ -2,7 +2,6 @@ import { useCallback } from 'react';
 import {
   Divider,
   Form,
-  Input,
   notification
 } from 'antd';
 import { Link } from 'react-router-dom';
@@ -12,9 +11,17 @@ import { openPasswordReset } from '../../../ducks/ApplicationDucks/PasswordReset
 import { useDispatch } from '../../../utility/WorkspaceContext';
 
 import {
-  BTN_LOGIN_GOOGLE, BTN_LOGIN, BTN_LINK_FORGOT_PASSWORD, BTN_REGISTER_LINK
-} from '../../../defaults/ButtonType';
+  BTN_LOGIN_GOOGLE,
+  BTN_LOGIN,
+  BTN_LINK_FORGOT_PASSWORD,
+  BTN_REGISTER_LINK
+} from '../../../defaults/components/ButtonType';
+import {
+  INPUT_EMAIL,
+  INPUT_PASSWORD
+} from '../../../defaults/components/InputType';
 
+import Input from '../../Input';
 import Button from '../../Button';
 
 import {
@@ -22,7 +29,6 @@ import {
 } from '../styles';
 
 const { Item: FormItem } = Form;
-const { Password: InputPassword } = Input;
 
 function FormLogin() {
   const dispatch = useDispatch();
@@ -55,17 +61,8 @@ function FormLogin() {
         onFinishFailed={onFinishFailed}
         autoComplete="off"
       >
-        <FormItem
-          name="email"
-        >
-          <Input placeholder="E-mail" />
-        </FormItem>
-
-        <FormItem
-          name="password"
-        >
-          <InputPassword placeholder="Senha" />
-        </FormItem>
+        <Input inputConfig={INPUT_EMAIL} />
+        <Input inputConfig={INPUT_PASSWORD} />
 
         <FormItem>
           <Button buttonConfig={BTN_LOGIN} onClick={() => console.log('oi')} />

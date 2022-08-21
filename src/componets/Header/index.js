@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 import {
   HeaderStyled,
   Button,
@@ -9,9 +11,11 @@ import {
 function Header() {
   return (
     <HeaderStyled>
-      <Button onClick={() => console.log('oi')}>
-        <UserIcon />
-      </Button>
+      <Link to="/edit-profile">
+        <Button onClick={() => console.log('oi')}>
+          <UserIcon />
+        </Button>
+      </Link>
 
       <Greeting>
         Olá,

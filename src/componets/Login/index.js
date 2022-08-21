@@ -34,7 +34,7 @@ function Login() {
   return (
     <Container isMobile={isMobile}>
       <InfoBrand>
-        <img src={`${process.env.PUBLIC_URL}/logo.png`} alt="Logo DinJoy" />
+        <img src="logo.png" alt="Logo DinJoy" />
         <Text>
           {!isPasswordResetVisible
             ? text.title.login

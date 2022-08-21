@@ -1,7 +1,7 @@
 import React from 'react';
 import { FcGoogle } from 'react-icons/fc';
 
-import { PRIMARY_COLOR } from './Colors';
+import { PRIMARY_COLOR } from '../Colors';
 
 export const BTN_SIGN_IN = {
   text: 'Login',
@@ -110,6 +110,39 @@ export const BTN_LOGIN = {
   }
 };
 
+export const CHANGE_USER_IMAGE = {
+  text: 'Alterar imagem',
+  type: 'default',
+  htmlType: 'submit',
+  style: {
+    alignItems: 'center',
+    display: 'flex',
+    justifyContent: 'center'
+  }
+};
+
+export const FORM_SAVE = {
+  text: 'Salvar',
+  type: 'primary',
+  htmlType: 'submit',
+  style: {
+    alignItems: 'center',
+    display: 'flex',
+    justifyContent: 'center'
+  }
+};
+
+export const FORM_CANCEL = {
+  text: 'Cancelar',
+  type: 'default',
+  htmlType: 'submit',
+  style: {
+    alignItems: 'center',
+    display: 'flex',
+    justifyContent: 'center'
+  }
+};
+
 export default {
   BTN_SIGN_IN,
   BTN_SIGN_UP,
@@ -120,5 +153,8 @@ export default {
   BTN_CREATE_ACCOUNT,
   BTN_LOGIN_LINK,
   BTN_LOGIN_GOOGLE,
-  BTN_LOGIN
+  BTN_LOGIN,
+  CHANGE_USER_IMAGE,
+  FORM_SAVE,
+  FORM_CANCEL
 };

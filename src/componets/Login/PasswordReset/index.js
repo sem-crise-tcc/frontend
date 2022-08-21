@@ -1,7 +1,6 @@
 import { useCallback } from 'react';
 import {
   Form,
-  Input,
   notification
 } from 'antd';
 
@@ -12,8 +11,10 @@ import { useDispatch } from '../../../utility/WorkspaceContext';
 import {
   BTN_FORGOT_PASSWORD,
   BTN_FORGOT_PASSWORD_CANCEL
-} from '../../../defaults/ButtonType';
+} from '../../../defaults/components/ButtonType';
+import { INPUT_EMAIL } from '../../../defaults/components/InputType';
 
+import Input from '../../Input';
 import Button from '../../Button';
 
 const { Item: FormItem } = Form;
@@ -46,11 +47,7 @@ function PasswordReset() {
       onFinishFailed={onFinishFailed}
       autoComplete="off"
     >
-      <FormItem
-        name="email"
-      >
-        <Input placeholder="E-mail" />
-      </FormItem>
+      <Input inputConfig={INPUT_EMAIL} />
 
       <FormItem>
         <Button
