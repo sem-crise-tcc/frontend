@@ -3,7 +3,7 @@ import Button from '../Button';
 import {
   BTN_SIGN_IN,
   BTN_SIGN_UP
-} from '../../defaults/ButtonType';
+} from '../../defaults/components/ButtonType';
 
 import {
   Container,

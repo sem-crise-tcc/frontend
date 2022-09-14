@@ -1,19 +1,31 @@
 import { useCallback } from 'react';
 import {
-  Divider, Form, Input, message
+  Divider, Form, message
 } from 'antd';
 import { Link } from 'react-router-dom';
 
 import { callRegisterUser } from '../../ducks/ApplicationDucks/RegisterUser';
 
-import { useDispatch } from '../../utility/WorkspaceContext';
+import { useDispatch, useSelector } from '../../utility/WorkspaceContext';
 import { getRuleField } from '../../utility/RuleField';
 import { validationRegexPassword } from '../../utility/ValidationRegexPassword';
 
 import useWindowDimensions from '../../hooks/useWindowDimensions';
 
 import { RULE_PASSWORD_TYPES } from '../../defaults/RulePasswordType';
-import { BTN_REGISTER_GOOGLE, BTN_CREATE_ACCOUNT, BTN_LOGIN_LINK } from '../../defaults/ButtonType';
+import {
+  BTN_REGISTER_GOOGLE,
+  BTN_CREATE_ACCOUNT,
+  BTN_LOGIN_LINK
+} from '../../defaults/components/ButtonType';
+import {
+  INPUT_USERNAME,
+  INPUT_LASTNAME,
+  INPUT_NICKNAME,
+  INPUT_EMAIL,
+  INPUT_PASSWORD,
+  INPUT_CONFIRM_PASSWORD
+} from '../../defaults/components/InputType';
 import {
   REGISTER_FIELD_FIRST_NAME,
   REGISTER_FIELD_LAST_NAME,
@@ -22,18 +34,23 @@ import {
   REGISTER_FIELD_PASSWORD
 } from '../../defaults/RegisterFields';
 
+import Input from '../Input';
 import Button from '../Button';
-import RulePassword from './RulePassword';
+import RulePassword from '../RulePassword';
 import {
   Container, InfoBrand, Describe, ContainerLogin, PasswordValidBlock
 } from './styles';
 
 const { Item: FormItem } = Form;
-const { Password: InputPassword } = Input;
 
 function RegisterUser() {
-  const dispatch = useDispatch();
   const { isMobile } = useWindowDimensions();
+
+  const isLoading = useSelector(
+    ({ application }) => application.loading.register
+  );
+
+  const dispatch = useDispatch();
 
   const callReloadSearch = useCallback(
     (searchBody) => dispatch(callRegisterUser({ searchBody })),
@@ -62,7 +79,7 @@ function RegisterUser() {
 
       callReloadSearch(searchBody);
     } catch (error) {
-      console.log('eror', error);
+      console.log('error', error);
     }
   };
 
@@ -71,6 +88,8 @@ function RegisterUser() {
       message.error('Por favor, preencha os campos corretamente.');
     }
   };
+
+  console.log('isLoading', isLoading);
 
   return (
     <Container isMobile={isMobile}>
@@ -87,29 +106,23 @@ function RegisterUser() {
         onFinishFailed={onFinishFailed}
         autoComplete="off"
       >
-        <FormItem
-          name="username"
+        <Input
+          inputConfig={INPUT_USERNAME}
           rules={[getRuleField(REGISTER_FIELD_FIRST_NAME)]}
-        >
-          <Input placeholder="Nome" />
-        </FormItem>
+        />
 
-        <FormItem
-          name="lastname"
+        <Input
+          inputConfig={INPUT_LASTNAME}
           rules={[getRuleField(REGISTER_FIELD_LAST_NAME)]}
-        >
-          <Input placeholder="Sobrenome" />
-        </FormItem>
+        />
 
-        <FormItem
-          name="nickname"
+        <Input
+          inputConfig={INPUT_NICKNAME}
           rules={[getRuleField(REGISTER_FIELD_NICKNAME)]}
-        >
-          <Input placeholder="Apelido" />
-        </FormItem>
+        />
 
-        <FormItem
-          name="email"
+        <Input
+          inputConfig={INPUT_EMAIL}
           rules={[
             {
               type: 'email',
@@ -117,24 +130,20 @@ function RegisterUser() {
             },
             getRuleField(REGISTER_FIELD_EMAIL)
           ]}
-        >
-          <Input placeholder="E-mail" />
-        </FormItem>
+        />
 
-        <FormItem
-          name="password"
+        <Input
+          inputConfig={INPUT_PASSWORD}
           hasFeedback
           rules={[
             ({
               validator: (_, value) => validationRegexPassword(value)
             })
           ]}
-        >
-          <InputPassword placeholder="Senha" />
-        </FormItem>
+        />
 
-        <FormItem
-          name="confirm-password"
+        <Input
+          inputConfig={INPUT_CONFIRM_PASSWORD}
           hasFeedback
           rules={[
             getRuleField(REGISTER_FIELD_PASSWORD),
@@ -147,9 +156,7 @@ function RegisterUser() {
               }
             })
           ]}
-        >
-          <InputPassword placeholder="Confirmar senha" />
-        </FormItem>
+        />
 
         <PasswordValidBlock>
           {RULE_PASSWORD_TYPES.map(({ icon, text }, index) => (
@@ -158,7 +165,7 @@ function RegisterUser() {
         </PasswordValidBlock>
 
         <FormItem>
-          <Button buttonConfig={BTN_CREATE_ACCOUNT} />
+          <Button buttonConfig={BTN_CREATE_ACCOUNT} loading={isLoading} />
         </FormItem>
       </Form>
 

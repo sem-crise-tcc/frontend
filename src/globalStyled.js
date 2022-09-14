@@ -1,17 +1,6 @@
 import { createGlobalStyle } from 'styled-components';
 
 export const GlobalStyled = createGlobalStyle`
-  :root {
-    --background: #F0F2F5;
-    --red: #e52e4d;
-    --green: #33cc95;
-    --blue: #5429CC;
-    --blue-light: #6933ff;
-    --text-title: #525252;
-    --text-body: #969cb3;
-    --shape: #FFFFFF;
-  }
-
   * {
     box-sizing: border-box;
     margin: 0;
@@ -33,7 +22,8 @@ export const GlobalStyled = createGlobalStyle`
   }
 
   body {
-    background: var(--background);
+    background-color: ${(props) => props.theme.backgroundBody};
+    color: ${(props) => props.theme.text};
     -webkit-font-smoothing: antialiased;
   }
 
@@ -43,12 +33,32 @@ export const GlobalStyled = createGlobalStyle`
   }
 
   h1, h2, h3, h4, h5, h6, strong {
-    color: var(--text-title);
+    color: ${(props) => props.theme.title};
     font-weight: 600;
   }
 
   button {
     cursor: pointer;
+  }
+
+  .btn-settings-option-open {
+    background-color: ${(props) => props.theme.backgroundButton};
+    border-color: ${(props) => props.theme.borderColorButton};
+  }
+
+  .setting-option {
+    background-color: ${(props) => props.theme.settingOption};
+    box-shadow: 4px 4px 10px ${(props) => props.theme.settingOptionShadow};
+  }
+
+  /* .container-option {
+    box-shadow: 4px 4px 10px ${(props) => props.theme.settingOptionShadow};
+  } */
+
+  .btn-settings-option-open {
+    box-shadow: ${(props) => props.theme.settingOptionShadowBtn};
+    border-color: ${(props) => props.theme.borderColorButton};
+    background-color: ${(props) => props.theme.backgroundBodyMedium};
   }
 
   [disable] {

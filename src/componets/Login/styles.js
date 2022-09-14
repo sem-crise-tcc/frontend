@@ -4,11 +4,9 @@ export const Container = styled.div`
   align-items: center;
   display: flex;
   flex-direction: column;
-  height: 100%;
   justify-content: center;
-  margin: 2rem;
+  padding: 2rem;
   margin: auto;
-  width: 90%;
 
   & form {
     width: 100%;
@@ -38,8 +36,9 @@ export const Describe = styled.h2`
 `;
 
 export const ContainerLogin = styled.div`
-  display: flex;
   align-items: center;
+  display: flex;
+  gap: 12px;
   justify-content: center;
   margin-bottom: 24px
 `;

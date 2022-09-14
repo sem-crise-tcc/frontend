@@ -1,33 +1,42 @@
 import { useCallback } from 'react';
 import {
   Form,
-  Input,
   notification
 } from 'antd';
 
-import { closePasswordReset } from '../../../ducks/ApplicationDucks/PasswordReset';
+import {
+  closeRecoverPassword,
+  callRecoverPassword
+} from '../../../ducks/ApplicationDucks/RecoverPassword';
 
 import { useDispatch } from '../../../utility/WorkspaceContext';
 
 import {
   BTN_FORGOT_PASSWORD,
   BTN_FORGOT_PASSWORD_CANCEL
-} from '../../../defaults/ButtonType';
+} from '../../../defaults/components/ButtonType';
+import { INPUT_EMAIL } from '../../../defaults/components/InputType';
 
+import Input from '../../Input';
 import Button from '../../Button';
 
 const { Item: FormItem } = Form;
 
-function PasswordReset() {
+function RecoverPassword() {
   const dispatch = useDispatch();
 
   const closeModal = useCallback(
-    () => dispatch(closePasswordReset()),
+    () => dispatch(closeRecoverPassword()),
     [dispatch]
   );
 
-  const onFinish = ({ email, password }) => {
-    console.log('Success:', email, password);
+  const callRecoverPasswordUser = useCallback(
+    (email) => dispatch(callRecoverPassword({ email })),
+    [dispatch]
+  );
+
+  const onFinish = ({ email }) => {
+    callRecoverPasswordUser(email);
   };
 
   const onFinishFailed = (error) => {
@@ -46,19 +55,11 @@ function PasswordReset() {
       onFinishFailed={onFinishFailed}
       autoComplete="off"
     >
-      <FormItem
-        name="email"
-      >
-        <Input placeholder="E-mail" />
-      </FormItem>
+      <Input inputConfig={INPUT_EMAIL} />
 
       <FormItem>
         <Button
           buttonConfig={BTN_FORGOT_PASSWORD}
-          onClick={() => {
-            // todo: await endpoint forgot password
-            closeModal();
-          }}
         />
       </FormItem>
 
@@ -74,4 +75,4 @@ function PasswordReset() {
   );
 }
 
-export default PasswordReset;
+export default RecoverPassword;
