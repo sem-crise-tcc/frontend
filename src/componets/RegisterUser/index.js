@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 
 import { callRegisterUser } from '../../ducks/ApplicationDucks/RegisterUser';
 
-import { useDispatch } from '../../utility/WorkspaceContext';
+import { useDispatch, useSelector } from '../../utility/WorkspaceContext';
 import { getRuleField } from '../../utility/RuleField';
 import { validationRegexPassword } from '../../utility/ValidationRegexPassword';
 
@@ -36,7 +36,7 @@ import {
 
 import Input from '../Input';
 import Button from '../Button';
-import RulePassword from './RulePassword';
+import RulePassword from '../RulePassword';
 import {
   Container, InfoBrand, Describe, ContainerLogin, PasswordValidBlock
 } from './styles';
@@ -44,8 +44,13 @@ import {
 const { Item: FormItem } = Form;
 
 function RegisterUser() {
-  const dispatch = useDispatch();
   const { isMobile } = useWindowDimensions();
+
+  const isLoading = useSelector(
+    ({ application }) => application.loading.register
+  );
+
+  const dispatch = useDispatch();
 
   const callReloadSearch = useCallback(
     (searchBody) => dispatch(callRegisterUser({ searchBody })),
@@ -74,7 +79,7 @@ function RegisterUser() {
 
       callReloadSearch(searchBody);
     } catch (error) {
-      console.log('eror', error);
+      console.log('error', error);
     }
   };
 
@@ -83,6 +88,8 @@ function RegisterUser() {
       message.error('Por favor, preencha os campos corretamente.');
     }
   };
+
+  console.log('isLoading', isLoading);
 
   return (
     <Container isMobile={isMobile}>
@@ -158,7 +165,7 @@ function RegisterUser() {
         </PasswordValidBlock>
 
         <FormItem>
-          <Button buttonConfig={BTN_CREATE_ACCOUNT} />
+          <Button buttonConfig={BTN_CREATE_ACCOUNT} loading={isLoading} />
         </FormItem>
       </Form>
 

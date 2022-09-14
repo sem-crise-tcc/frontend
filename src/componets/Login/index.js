@@ -5,7 +5,7 @@ import useWindowDimensions from '../../hooks/useWindowDimensions';
 import { useSelector } from '../../utility/WorkspaceContext';
 
 import FormLogin from './FormLogin';
-import PasswordReset from './PasswordReset';
+import RecoverPassword from './RecoverPassword';
 import {
   Container,
   Text,
@@ -16,18 +16,18 @@ import {
 function Login() {
   const { isMobile } = useWindowDimensions();
 
-  const isPasswordResetVisible = useSelector(
-    ({ application }) => application.page.passwordReset.isVisible
+  const isRecoverPasswordVisible = useSelector(
+    ({ application }) => application.page.recoverPassword.isVisible
   );
 
   const text = {
     title: {
       login: 'Olá!',
-      passwordReset: 'Hey!'
+      recoverPassword: 'Hey!'
     },
     describe: {
       login: 'Breve descrição sobre o que é o produto brabrbarbabr brabrab brabrab',
-      passwordReset: 'Informe seu e-mail do DinJoy'
+      recoverPassword: 'Informe seu e-mail do DinJoy'
     }
   };
 
@@ -36,18 +36,18 @@ function Login() {
       <InfoBrand>
         <img src="logo.png" alt="Logo DinJoy" />
         <Text>
-          {!isPasswordResetVisible
+          {!isRecoverPasswordVisible
             ? text.title.login
-            : text.title.passwordReset}
+            : text.title.recoverPassword}
         </Text>
         <Describe>
-          {!isPasswordResetVisible
+          {!isRecoverPasswordVisible
             ? text.describe.login
-            : text.describe.passwordReset}
+            : text.describe.recoverPassword}
         </Describe>
       </InfoBrand>
 
-      {!isPasswordResetVisible ? <FormLogin /> : <PasswordReset />}
+      {!isRecoverPasswordVisible ? <FormLogin /> : <RecoverPassword />}
     </Container>
 
   );

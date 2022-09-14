@@ -34,8 +34,9 @@ export const Describe = styled.h2`
 `;
 
 export const ContainerLogin = styled.div`
-  display: flex;
   align-items: center;
+  display: flex;
+  gap: 12px;
   justify-content: center;
   margin-bottom: 24px
 `;

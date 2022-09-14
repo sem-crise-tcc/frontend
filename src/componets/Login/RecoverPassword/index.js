@@ -4,7 +4,10 @@ import {
   notification
 } from 'antd';
 
-import { closePasswordReset } from '../../../ducks/ApplicationDucks/PasswordReset';
+import {
+  closeRecoverPassword,
+  callRecoverPassword
+} from '../../../ducks/ApplicationDucks/RecoverPassword';
 
 import { useDispatch } from '../../../utility/WorkspaceContext';
 
@@ -19,16 +22,21 @@ import Button from '../../Button';
 
 const { Item: FormItem } = Form;
 
-function PasswordReset() {
+function RecoverPassword() {
   const dispatch = useDispatch();
 
   const closeModal = useCallback(
-    () => dispatch(closePasswordReset()),
+    () => dispatch(closeRecoverPassword()),
     [dispatch]
   );
 
-  const onFinish = ({ email, password }) => {
-    console.log('Success:', email, password);
+  const callRecoverPasswordUser = useCallback(
+    (email) => dispatch(callRecoverPassword({ email })),
+    [dispatch]
+  );
+
+  const onFinish = ({ email }) => {
+    callRecoverPasswordUser(email);
   };
 
   const onFinishFailed = (error) => {
@@ -52,10 +60,6 @@ function PasswordReset() {
       <FormItem>
         <Button
           buttonConfig={BTN_FORGOT_PASSWORD}
-          onClick={() => {
-            // todo: await endpoint forgot password
-            closeModal();
-          }}
         />
       </FormItem>
 
@@ -71,4 +75,4 @@ function PasswordReset() {
   );
 }
 
-export default PasswordReset;
+export default RecoverPassword;

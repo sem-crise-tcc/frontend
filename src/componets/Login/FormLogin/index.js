@@ -6,9 +6,10 @@ import {
 } from 'antd';
 import { Link } from 'react-router-dom';
 
-import { openPasswordReset } from '../../../ducks/ApplicationDucks/PasswordReset';
+import { openRecoverPassword } from '../../../ducks/ApplicationDucks/RecoverPassword';
+import { callLogin } from '../../../ducks/ApplicationDucks/Login';
 
-import { useDispatch } from '../../../utility/WorkspaceContext';
+import { useDispatch, useSelector } from '../../../utility/WorkspaceContext';
 
 import {
   BTN_LOGIN_GOOGLE,
@@ -33,13 +34,27 @@ const { Item: FormItem } = Form;
 function FormLogin() {
   const dispatch = useDispatch();
 
-  const callPasswordReset = useCallback(
-    () => dispatch(openPasswordReset()),
+  const isLoading = useSelector(
+    ({ application }) => application.loading.login
+  );
+
+  const callOpenRecoverPassword = useCallback(
+    () => dispatch(openRecoverPassword()),
+    [dispatch]
+  );
+
+  const callUserLogin = useCallback(
+    (searchBody) => dispatch(callLogin({ searchBody })),
     [dispatch]
   );
 
   const onFinish = ({ email, password }) => {
-    console.log('Success:', email, password);
+    const searchBody = {
+      email,
+      password
+    };
+
+    callUserLogin(searchBody);
   };
 
   const onFinishFailed = (error) => {
@@ -65,11 +80,14 @@ function FormLogin() {
         <Input inputConfig={INPUT_PASSWORD} />
 
         <FormItem>
-          <Button buttonConfig={BTN_LOGIN} onClick={() => console.log('oi')} />
+          <Button buttonConfig={BTN_LOGIN} loading={isLoading} />
         </FormItem>
 
         <FormItem>
-          <Button buttonConfig={BTN_LINK_FORGOT_PASSWORD} onClick={() => callPasswordReset()} />
+          <Button
+            buttonConfig={BTN_LINK_FORGOT_PASSWORD}
+            onClick={() => callOpenRecoverPassword()}
+          />
         </FormItem>
       </Form>
 
