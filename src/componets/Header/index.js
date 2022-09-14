@@ -1,30 +1,29 @@
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
+import { BTN_BACK_PAGE } from '../../defaults/components/ButtonType';
+
+import Button from '../Button';
+
 import {
-  HeaderStyled,
-  Button,
-  UserIcon,
-  Greeting,
-  UsernameStyled
+  HeaderStyled
 } from './styles';
 
-function Header() {
+function Header({ title, backPageLink }) {
   return (
     <HeaderStyled>
-      <Link to="/edit-profile">
-        <Button onClick={() => console.log('oi')}>
-          <UserIcon />
-        </Button>
+      <Link to={`/${backPageLink}`}>
+        <Button buttonConfig={BTN_BACK_PAGE} />
       </Link>
 
-      <Greeting>
-        Olá,
-        <UsernameStyled>Anna</UsernameStyled>
-      </Greeting>
-
-      <div>btn notificação</div>
+      <h2>{title}</h2>
     </HeaderStyled>
   );
 }
+
+Header.propTypes = {
+  title: PropTypes.string.isRequired,
+  backPageLink: PropTypes.string.isRequired
+};
 
 export default Header;

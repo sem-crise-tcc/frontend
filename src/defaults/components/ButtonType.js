@@ -1,7 +1,12 @@
 import React from 'react';
 import { FcGoogle } from 'react-icons/fc';
+import { IoSettingsOutline } from 'react-icons/io5';
+import { FiChevronLeft } from 'react-icons/fi';
+import { MdKeyboardArrowRight } from 'react-icons/md';
 
-import { PRIMARY_COLOR } from '../Colors';
+import {
+  PRIMARY_COLOR, LIGHT_RED_COLOR, WHITE_COLOR
+} from '../Colors';
 
 export const BTN_SIGN_IN = {
   text: 'Login',
@@ -29,7 +34,12 @@ export const BTN_LINK_FORGOT_PASSWORD = {
 export const BTN_FORGOT_PASSWORD = {
   text: 'Recuperar senha',
   block: 'block',
-  type: 'primary'
+  type: 'primary',
+  htmlType: 'submit',
+  style: {
+    backgroundColor: LIGHT_RED_COLOR,
+    borderColor: LIGHT_RED_COLOR
+  }
 };
 
 export const BTN_REGISTER_LINK = {
@@ -57,7 +67,7 @@ export const BTN_REGISTER_GOOGLE = {
     alignItems: 'center',
     display: 'flex',
     borderRadius: '30px',
-    justifyContent: 'center',
+    justifyContent: 'space-evenly',
     marginTop: '24px'
   }
 };
@@ -70,7 +80,9 @@ export const BTN_CREATE_ACCOUNT = {
   style: {
     alignItems: 'center',
     display: 'flex',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    backgroundColor: LIGHT_RED_COLOR,
+    borderColor: LIGHT_RED_COLOR
   }
 };
 
@@ -93,7 +105,7 @@ export const BTN_LOGIN_GOOGLE = {
     alignItems: 'center',
     display: 'flex',
     borderRadius: '30px',
-    justifyContent: 'center',
+    justifyContent: 'space-evenly',
     marginTop: '24px'
   }
 };
@@ -106,11 +118,13 @@ export const BTN_LOGIN = {
   style: {
     alignItems: 'center',
     display: 'flex',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    backgroundColor: LIGHT_RED_COLOR,
+    borderColor: LIGHT_RED_COLOR
   }
 };
 
-export const CHANGE_USER_IMAGE = {
+export const BTN_CHANGE_USER_IMAGE = {
   text: 'Alterar imagem',
   type: 'default',
   htmlType: 'submit',
@@ -121,7 +135,7 @@ export const CHANGE_USER_IMAGE = {
   }
 };
 
-export const FORM_SAVE = {
+export const BTN_FORM_SAVE = {
   text: 'Salvar',
   type: 'primary',
   htmlType: 'submit',
@@ -132,7 +146,7 @@ export const FORM_SAVE = {
   }
 };
 
-export const FORM_CANCEL = {
+export const BTN_FORM_CANCEL = {
   text: 'Cancelar',
   type: 'default',
   htmlType: 'submit',
@@ -140,6 +154,53 @@ export const FORM_CANCEL = {
     alignItems: 'center',
     display: 'flex',
     justifyContent: 'center'
+  }
+};
+
+export const BTN_CHANGE_PASSWORD = {
+  text: 'Alterar senha',
+  block: 'block',
+  type: 'default',
+  htmlType: 'submit'
+};
+
+export const BTN_SETTINGS = {
+  icon: <IoSettingsOutline />,
+  shape: 'circle',
+  htmlType: 'submit',
+  className: 'btn-settings',
+  size: 'large',
+  style: {
+    backgroundColor: WHITE_COLOR,
+    borderColor: WHITE_COLOR,
+    alignItems: 'center',
+    display: 'flex',
+    justifyContent: 'center'
+  }
+};
+
+export const BTN_BACK_PAGE = {
+  icon: <FiChevronLeft />,
+  shape: 'circle',
+  size: 'large',
+  className: 'btn-back-page',
+  style: {
+    backgroundColor: 'transparent',
+    borderColor: 'transparent',
+    color: WHITE_COLOR
+  }
+};
+
+export const BTN_SETTINGS_OPTION_OPEN = {
+  icon: <MdKeyboardArrowRight />,
+  className: 'btn-settings-option-open',
+  style: {
+    color: PRIMARY_COLOR,
+    marginLeft: '12px',
+    alignItems: 'center',
+    justifyContent: 'center',
+    display: 'flex',
+    borderRadius: '5px'
   }
 };
 
@@ -154,7 +215,11 @@ export default {
   BTN_LOGIN_LINK,
   BTN_LOGIN_GOOGLE,
   BTN_LOGIN,
-  CHANGE_USER_IMAGE,
-  FORM_SAVE,
-  FORM_CANCEL
+  BTN_CHANGE_USER_IMAGE,
+  BTN_FORM_SAVE,
+  BTN_FORM_CANCEL,
+  BTN_CHANGE_PASSWORD,
+  BTN_SETTINGS,
+  BTN_BACK_PAGE,
+  BTN_SETTINGS_OPTION_OPEN
 };

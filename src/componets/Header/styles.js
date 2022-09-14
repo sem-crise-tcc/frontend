@@ -1,33 +1,22 @@
 import styled from 'styled-components';
 
+import { PRIMARY_COLOR, WHITE_COLOR } from '../../defaults/Colors';
+
 export const HeaderStyled = styled.header`
+  background-color: ${PRIMARY_COLOR};
+  color: ${WHITE_COLOR};
+  padding: 1.5rem;
+  display: flex;
   align-items: center;
-  display: flex;
-  justify-content: space-between;
-  margin: 1.5rem;
+
+  & h2 {
+    color: ${WHITE_COLOR};
+    margin: 0 0 0 1.5rem;
+  }
+
+  & .btn-back-page svg {
+    font-size: 30px;
+  }
 `;
 
-export const UserIcon = styled.img``;
-
-export const Greeting = styled.div`
-  display: flex;
-  flex-direction: column;
-`;
-
-export const UsernameStyled = styled.strong``;
-
-export const Button = styled.button`
-  background: red;
-  border: 2px solid blue;
-  border-radius: 50px;
-  height: 5rem;
-  width: 5rem;
-`;
-
-export default {
-  HeaderStyled,
-  Button,
-  UserIcon,
-  Greeting,
-  UsernameStyled
-};
+export default { HeaderStyled };

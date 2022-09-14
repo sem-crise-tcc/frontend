@@ -1,6 +1,6 @@
-export const CALL_REGISTER_USER = '@application/CALL_REGISTER_USER';
-export const REGISTER_USER_SUCCESS = '@application/REGISTER_USER_SUCCESS';
-export const REGISTER_USER_FAILED = '@application/REGISTER_USER_FAILED';
+export const CALL_REGISTER_USER = '@user/CALL_REGISTER_USER';
+export const REGISTER_USER_SUCCESS = '@user/REGISTER_USER_SUCCESS';
+export const REGISTER_USER_FAILED = '@user/REGISTER_USER_FAILED';
 
 export const callRegisterUser = ({ searchBody }) => ({
   type: CALL_REGISTER_USER,
@@ -31,10 +31,14 @@ export const onRegisterUserSuccess = (state) => ({
   }
 });
 
-export const onRegisterUserFailed = (state) => ({
+export const onRegisterUserFailed = (state, { error }) => ({
   ...state,
   loading: {
     ...state.loading,
     register: false
+  },
+  error: {
+    ...state.error,
+    register: error
   }
 });
