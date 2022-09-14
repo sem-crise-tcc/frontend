@@ -1,65 +1,150 @@
+import { useCallback } from 'react';
+import { Link } from 'react-router-dom';
 import { Form } from 'antd';
 
 import Input from '../Input';
 import Button from '../Button';
+import RulePassword from '../RulePassword';
+import Header from '../Header';
+
+import { useSelector, useDispatch } from '../../utility/WorkspaceContext';
+import { getRuleField } from '../../utility/RuleField';
+import { validationRegexPassword } from '../../utility/ValidationRegexPassword';
+
+import { callEditProfile } from '../../ducks/ApplicationDucks/EditProfile';
 
 import {
-  CHANGE_USER_IMAGE,
-  FORM_SAVE,
-  FORM_CANCEL
+  REGISTER_FIELD_EMAIL
+} from '../../defaults/RegisterFields';
+import {
+  BTN_FORM_SAVE,
+  BTN_FORM_CANCEL
 } from '../../defaults/components/ButtonType';
-
 import {
   INPUT_USERNAME,
   INPUT_LASTNAME,
   INPUT_NICKNAME,
-  INPUT_PASSWORD
+  INPUT_EMAIL,
+  INPUT_CURRENT_PASSWORD,
+  INPUT_NEW_PASSWORD,
+  INPUT_CONFIRM_NEW_PASSWORD
 } from '../../defaults/components/InputType';
+import { RULE_PASSWORD_TYPES } from '../../defaults/RulePasswordType';
 
 import {
   Container,
   Main,
-  FormItem,
-  UserIcon,
+  PasswordValidBlock,
   Footer
 } from './styles';
 
 function EditProfile() {
+  const dispatch = useDispatch();
+
+  const handleEditProfile = useCallback(
+    (searchBody) => dispatch(callEditProfile({ searchBody })),
+    [dispatch]
+  );
+
+  const isLoading = useSelector(
+    ({ application }) => application.loading.editProfile
+  );
+
   const onFinish = (values) => {
-    console.log('Success:', values);
+    try {
+      const {
+        username,
+        lastname,
+        nickname,
+        email,
+        'current-password': currentPassword,
+        'confirm-new-password': confirmNewPassword,
+        'confirm-password': confirmPassword
+      } = values;
+
+      const searchBody = {
+        username,
+        lastname,
+        nickname,
+        email,
+        currentPassword,
+        confirmNewPassword,
+        confirmPassword
+      };
+
+      handleEditProfile(searchBody);
+    } catch (error) {
+      console.log('error', error);
+    }
   };
 
-  const onFinishFailed = (errorInfo) => {
-    console.log('Failed:', errorInfo);
-  };
+  console.log('isLoading', isLoading);
 
   return (
-    <Container>
-      <Form
-        onFinish={onFinish}
-        onFinishFailed={onFinishFailed}
-      >
-        <Main>
-          <FormItem className="edit-profile__form__field__img">
-            <UserIcon src="logo.png" alt="Photo user" />
-            <Button buttonConfig={CHANGE_USER_IMAGE} />
-          </FormItem>
+    <>
+      <Header title="Perfil" backPageLink="user-settings" />
 
-          <Input inputConfig={INPUT_USERNAME} />
+      <Container>
+        <h3>Informações pessoais</h3>
 
-          <Input inputConfig={INPUT_LASTNAME} />
+        <Form onFinish={onFinish} autoComplete="off">
+          <Main>
+            <Input inputConfig={INPUT_USERNAME} />
+            <Input inputConfig={INPUT_LASTNAME} />
+            <Input inputConfig={INPUT_NICKNAME} />
+            <Input
+              inputConfig={INPUT_EMAIL}
+              rules={[
+                {
+                  type: 'email',
+                  message: 'Não é um e-mail válido.'
+                },
+                getRuleField(REGISTER_FIELD_EMAIL)
+              ]}
+            />
+            <Input inputConfig={INPUT_CURRENT_PASSWORD} />
+            <Input
+              inputConfig={INPUT_NEW_PASSWORD}
+              rules={[
+                ({
+                  validator: (_, value) => value?.length && validationRegexPassword(value)
+                })
+              ]}
+            />
+            <Input
+              inputConfig={INPUT_CONFIRM_NEW_PASSWORD}
+              rules={[
+                ({ getFieldValue }) => ({
+                  validator(_, value) {
+                    if (!value || getFieldValue('new-password') === value) {
+                      return Promise.resolve();
+                    }
+                    return Promise.reject(new Error('A confirmação de senha não confere.'));
+                  }
+                })
+              ]}
+            />
 
-          <Input inputConfig={INPUT_NICKNAME} />
+            <PasswordValidBlock>
+              {RULE_PASSWORD_TYPES.map(({ icon, text }, index) => (
+                <RulePassword key={index} icon={icon} text={text} />
+              ))}
+            </PasswordValidBlock>
+          </Main>
 
-          <Input inputConfig={INPUT_PASSWORD} />
-        </Main>
+          <Footer>
+            <Link to="/user-settings">
+              <Button buttonConfig={BTN_FORM_CANCEL} />
+            </Link>
 
-        <Footer>
-          <Button buttonConfig={FORM_CANCEL} />
-          <Button buttonConfig={FORM_SAVE} onClick={() => onFinish()} />
-        </Footer>
-      </Form>
-    </Container>
+            <Button
+              buttonConfig={BTN_FORM_SAVE}
+              loading={isLoading}
+            />
+          </Footer>
+        </Form>
+      </Container>
+    </>
   );
 }
 
