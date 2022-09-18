@@ -15,6 +15,7 @@ import Login from './componets/Login';
 import Home from './componets/Home';
 import EditProfile from './componets/EditProfile';
 import UserSettings from './componets/UserSettings';
+import Category from './componets/Category';
 
 function App() {
   const isActiveDarkMode = useSelector(({ application }) => application.theme.darkMode);
@@ -29,6 +30,7 @@ function App() {
           <Route path="home" element={<Home />} />
           <Route path="edit-profile" element={<EditProfile />} />
           <Route path="user-settings" element={<UserSettings />} />
+          <Route path="category" element={<Category />} />
         </Routes>
         <GlobalStyled />
       </div>
