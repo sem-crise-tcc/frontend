@@ -9,9 +9,9 @@ import {
   HeaderStyled
 } from './styles';
 
-function Header({ title, backPageLink }) {
+function Header({ title, backPageLink, backgroundColor }) {
   return (
-    <HeaderStyled>
+    <HeaderStyled backgroundColor={backgroundColor}>
       <Link to={`/${backPageLink}`}>
         <Button buttonConfig={BTN_BACK_PAGE} />
       </Link>
@@ -21,9 +21,14 @@ function Header({ title, backPageLink }) {
   );
 }
 
+Header.defaultProps = {
+  backgroundColor: ''
+};
+
 Header.propTypes = {
   title: PropTypes.string.isRequired,
-  backPageLink: PropTypes.string.isRequired
+  backPageLink: PropTypes.string.isRequired,
+  backgroundColor: PropTypes.string
 };
 
 export default Header;

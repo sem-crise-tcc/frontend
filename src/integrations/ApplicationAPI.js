@@ -1,12 +1,10 @@
-import { DEFAULT_ENVIRONMENT } from '../defaults/Endpoints';
-
 const headers = {
   'Content-type': 'application/json'
 };
 
 class ApplicationAPI {
   static register = (searchBody) => new Promise((resolve, reject) => {
-    fetch(`${DEFAULT_ENVIRONMENT}/api/User/register`, {
+    fetch(`${process.env.REACT_APP_API_URL}/api/User/register`, {
       method: 'POST',
       body: JSON.stringify(searchBody),
       headers: { ...headers }
@@ -25,7 +23,7 @@ class ApplicationAPI {
   });
 
   static login = (searchBody) => new Promise((resolve, reject) => {
-    fetch(`${DEFAULT_ENVIRONMENT}/api/User/login`, {
+    fetch(`${process.env.REACT_APP_API_URL}/api/User/login`, {
       method: 'POST',
       body: JSON.stringify(searchBody),
       headers: { ...headers }
@@ -44,7 +42,7 @@ class ApplicationAPI {
   });
 
   static recoverPassword = ({ email }) => new Promise((resolve, reject) => {
-    fetch(`${DEFAULT_ENVIRONMENT}/api/User/SendEmailForgetPassword`, {
+    fetch(`${process.env.REACT_APP_API_URL}/api/User/SendEmailForgetPassword`, {
       method: 'POST',
       body: JSON.stringify({ email }),
       headers: { ...headers }
@@ -63,7 +61,7 @@ class ApplicationAPI {
   });
 
   static editProfile = (searchBody) => new Promise((resolve, reject) => {
-    fetch(`${DEFAULT_ENVIRONMENT}/api/User/UpdateUser`, {
+    fetch(`${process.env.REACT_APP_API_URL}/api/User/UpdateUser`, {
       method: 'PUT',
       body: JSON.stringify(searchBody),
       headers: { ...headers }

@@ -3,9 +3,14 @@ import { FcGoogle } from 'react-icons/fc';
 import { IoSettingsOutline } from 'react-icons/io5';
 import { FiChevronLeft } from 'react-icons/fi';
 import { MdKeyboardArrowRight } from 'react-icons/md';
+import { HiPlusSm } from 'react-icons/hi';
 
 import {
-  PRIMARY_COLOR, LIGHT_RED_COLOR, WHITE_COLOR
+  PRIMARY_COLOR,
+  LIGHT_RED_COLOR,
+  WHITE_COLOR,
+  MEDIUM_GREEN_COLOR,
+  MEDIUM_RED_COLOR
 } from '../Colors';
 
 export const BTN_SIGN_IN = {
@@ -204,6 +209,49 @@ export const BTN_SETTINGS_OPTION_OPEN = {
   }
 };
 
+export const BTN_CUSTOMIZE_CATEGORY = {
+  icon: <MdKeyboardArrowRight />,
+  style: {
+    color: PRIMARY_COLOR,
+    marginLeft: '12px',
+    alignItems: 'center',
+    justifyContent: 'center',
+    display: 'flex',
+    borderRadius: '30px',
+    boxShadow: '1px 4px 9px #9b9b9b'
+  }
+};
+
+export const BTN_ADD_CATEGORY_EXPENSE = {
+  icon: <HiPlusSm />,
+  text: 'Criar categoria de despesa',
+  block: 'block',
+  type: 'default',
+  style: {
+    color: WHITE_COLOR,
+    backgroundColor: MEDIUM_RED_COLOR,
+    alignItems: 'center',
+    justifyContent: 'center',
+    display: 'flex',
+    borderRadius: '3px'
+  }
+};
+
+export const BTN_ADD_CATEGORY_EARNING = {
+  icon: <HiPlusSm />,
+  text: 'Criar categoria de despesa',
+  block: 'block',
+  type: 'default',
+  style: {
+    color: WHITE_COLOR,
+    backgroundColor: MEDIUM_GREEN_COLOR,
+    alignItems: 'center',
+    justifyContent: 'center',
+    display: 'flex',
+    borderRadius: '3px'
+  }
+};
+
 export default {
   BTN_SIGN_IN,
   BTN_SIGN_UP,
@@ -221,5 +269,8 @@ export default {
   BTN_CHANGE_PASSWORD,
   BTN_SETTINGS,
   BTN_BACK_PAGE,
-  BTN_SETTINGS_OPTION_OPEN
+  BTN_SETTINGS_OPTION_OPEN,
+  BTN_CUSTOMIZE_CATEGORY,
+  BTN_ADD_CATEGORY_EXPENSE,
+  BTN_ADD_CATEGORY_EARNING
 };

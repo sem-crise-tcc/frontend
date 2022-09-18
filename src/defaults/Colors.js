@@ -1,10 +1,16 @@
 export const PRIMARY_COLOR = '#2965D5';
 export const LIGHT_RED_COLOR = '#F47467';
+export const MEDIUM_RED_COLOR = '#DE4848';
 export const WHITE_COLOR = '#FFFFFF';
 export const WHITE_LIGHT_COLOR = '#F5F5F6';
 export const BLUE_LIGHT = '#BCD2E8';
 export const YELLOW_COLOR = '#F2A73A';
 export const BACK_COLOR = '#000000';
+export const MEDIUM_GREEN_COLOR = '#65A556';
+
+export const CATEGORY_COLOR_BLUE = '#3899FA';
+export const CATEGORY_COLOR_GREEN = '#53A333';
+export const CATEGORY_COLOR_ORANGE = '#EA9617';
 
 export const DARK_MODE_BACKGROUND_BUTTON = '#202020';
 export const DARK_MODE_GRAY_SHADOW_COLOR = '#565656';
@@ -39,6 +45,7 @@ export const lightTheme = {
 };
 
 export default {
+  MEDIUM_RED_COLOR,
   lightTheme,
   darkTheme,
   PRIMARY_COLOR,
@@ -47,5 +54,9 @@ export default {
   WHITE_LIGHT_COLOR,
   BLUE_LIGHT,
   YELLOW_COLOR,
-  LIGHT_MODE_BACKGROUND_BODY
+  LIGHT_MODE_BACKGROUND_BODY,
+  MEDIUM_GREEN_COLOR,
+  CATEGORY_COLOR_BLUE,
+  CATEGORY_COLOR_GREEN,
+  CATEGORY_COLOR_ORANGE
 };

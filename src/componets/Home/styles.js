@@ -43,6 +43,44 @@ export const Button = styled.button`
   width: 5rem;
 `;
 
+export const Main = styled.main`
+  padding: 1rem;
+`;
+
+export const ContainerCategory = styled.div`
+  align-items: center;
+  background: #EEEEEE;
+  border-radius: 5px;
+  display: grid;
+  grid-template-columns: 15% 67% 15%;
+  gap: 5px;
+  box-shadow: 4px 4px 10px #9b9b9b;
+  padding: 5px;
+
+  & > div {
+    display: flex;
+    flex-direction: column;
+  }
+
+  & > svg {
+    background: #fff;
+    width: 42px;
+    height: 42px;
+    border-radius: 30px;
+    padding: 5px;
+    box-shadow: 4px 4px 10px #9b9b9b;
+    color: ${PRIMARY_COLOR};
+  }
+`;
+
+export const CategoryTitle = styled.strong`
+  font-size: 16px;
+`;
+
+export const CategorySubtitle = styled.span`
+  font-size: 12px;
+`;
+
 export default {
   HeaderStyled,
   ContainerUser,
@@ -50,5 +88,9 @@ export default {
   Button,
   UserIcon,
   Greeting,
-  UsernameStyled
+  UsernameStyled,
+  Main,
+  ContainerCategory,
+  CategoryTitle,
+  CategorySubtitle
 };

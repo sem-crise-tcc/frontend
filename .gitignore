@@ -12,6 +12,7 @@ lerna-debug.log*
 dist
 dist-ssr
 *.local
+.env
 
 # testing
 /coverage
