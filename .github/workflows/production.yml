@@ -1,0 +1,25 @@
+name: Production workflow
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Use Node.js 17.x
+        uses: actions/setup-node@v1
+        with:
+          node-version: 17.x
+      - run: yarn install
+      - run: yarn run build --if-present
+      - name: Deploy to Heroku
+        uses: akhileshns/heroku-deploy@v3.12.12
+        with:
+          heroku_api_key: '092e7943-139f-4dd0-beb8-32e49a313709'
+          heroku_app_name: 'sem-crise'
+          heroku_email: 'gabryelless23@gmail.com'

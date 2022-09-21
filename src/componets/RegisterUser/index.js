@@ -62,16 +62,16 @@ function RegisterUser() {
       const {
         username,
         lastname,
-        nickname,
+        // nickname,
         email,
         password,
         'confirm-password': confirmPassword
       } = values;
 
       const searchBody = {
-        username,
+        name: username,
         lastname,
-        nickname,
+        // nickname,
         email,
         password,
         confirmPassword
