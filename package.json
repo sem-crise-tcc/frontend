@@ -23,6 +23,7 @@
     "react-switch": "^7.0.0",
     "redux": "^4.2.0",
     "redux-saga": "^1.1.3",
+    "serve": "^14.0.1",
     "styled-components": "5.3.5",
     "web-vitals": "2.1.0"
   },
@@ -34,7 +35,8 @@
     "lint": "eslint \"src/**/*.{js,jsx}\" --quiet",
     "lint:fix": "eslint --fix .",
     "prettier": "prettier --write \"src/**/*.{js,jsx}\"",
-    "postinstall": "husky install"
+    "postinstall": "husky install",
+    "heroku-postbuild": "craco build"
   },
   "eslintConfig": {
     "extends": [
