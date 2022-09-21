@@ -1,15 +1,10 @@
-import { ENDPOINT_BACKEND } from '../defaults/Endpoints';
-
 const headers = {
-  'Content-type': 'application/json',
-  'Access-Control-Allow-Headers': 'Content-Type',
-  'Access-Control-Allow-Origin': '*',
-  'Access-Control-Allow-Methods': '*'
+  'Content-type': 'application/json'
 };
 
 class ApplicationAPI {
   static register = (searchBody) => new Promise((resolve, reject) => {
-    fetch(`${ENDPOINT_BACKEND}/api/User/register`, {
+    fetch(`${process.env.REACT_APP_API_URL}/api/User/register`, {
       method: 'POST',
       body: JSON.stringify(searchBody),
       headers: { ...headers }
@@ -28,7 +23,7 @@ class ApplicationAPI {
   });
 
   static login = (searchBody) => new Promise((resolve, reject) => {
-    fetch(`${ENDPOINT_BACKEND}/api/User/login`, {
+    fetch(`${process.env.REACT_APP_API_URL}/api/User/login`, {
       method: 'POST',
       body: JSON.stringify(searchBody),
       headers: { ...headers }
@@ -47,7 +42,7 @@ class ApplicationAPI {
   });
 
   static recoverPassword = ({ email }) => new Promise((resolve, reject) => {
-    fetch(`${ENDPOINT_BACKEND}/api/User/SendEmailForgetPassword`, {
+    fetch(`${process.env.REACT_APP_API_URL}/api/User/SendEmailForgetPassword`, {
       method: 'POST',
       body: JSON.stringify({ email }),
       headers: { ...headers }
@@ -66,7 +61,7 @@ class ApplicationAPI {
   });
 
   static editProfile = (searchBody) => new Promise((resolve, reject) => {
-    fetch(`${ENDPOINT_BACKEND}/api/User/UpdateUser`, {
+    fetch(`${process.env.REACT_APP_API_URL}/api/User/UpdateUser`, {
       method: 'PUT',
       body: JSON.stringify(searchBody),
       headers: { ...headers }
