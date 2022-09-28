@@ -1,6 +1,6 @@
 export const INPUT_USERNAME = {
   placeholder: 'Nome',
-  name: 'username'
+  name: 'name'
 };
 
 export const INPUT_LASTNAME = {

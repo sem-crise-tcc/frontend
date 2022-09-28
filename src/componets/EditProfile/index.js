@@ -53,7 +53,7 @@ function EditProfile() {
   const onFinish = (values) => {
     try {
       const {
-        username,
+        name,
         lastname,
         nickname,
         email,
@@ -63,7 +63,7 @@ function EditProfile() {
       } = values;
 
       const searchBody = {
-        username,
+        name,
         lastname,
         nickname,
         email,

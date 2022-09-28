@@ -60,7 +60,7 @@ function RegisterUser() {
   const onFinish = (values) => {
     try {
       const {
-        username,
+        name,
         lastname,
         nickname,
         email,
@@ -69,7 +69,7 @@ function RegisterUser() {
       } = values;
 
       const searchBody = {
-        username,
+        name,
         lastname,
         nickname,
         email,
