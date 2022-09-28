@@ -15,7 +15,7 @@ export const Container = styled.div`
   ${({ isMobile }) => !isMobile
     && `
     margin: auto;
-    width: 30%;  
+    width: 40%;  
   `}
 `;
 
